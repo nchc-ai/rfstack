@@ -1,0 +1,1680 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "AI Train VM API.",
+        "title": "rfstack API",
+        "contact": {},
+        "license": {},
+        "version": "0.2"
+    },
+    "host": "localhost:8088",
+    "basePath": "/",
+    "paths": {
+        "/v1/classroom/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete classroom running jobs in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Classroom"
+                ],
+                "summary": "Delete classroom running jobs in OpenStack",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/create": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Add new course information into database",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Add new course information",
+                "parameters": [
+                    {
+                        "description": "course information",
+                        "name": "course",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.AddCourse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "All associated job, vm, secgroup and vol-share in OpenStack are also deleted.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Delete course information",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "course uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/get/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Get one courses information by course id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Get one courses information by course id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "course uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GetCourseResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/level/{level}": {
+            "get": {
+                "description": "List basic or advance courses information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "List basic or advance courses information",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "basic or advance",
+                        "name": "level",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.ListCourseResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/list": {
+            "get": {
+                "description": "get all course information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "List all course information",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.ListCourseResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List someone's all courses information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "List someone's all courses information",
+                "parameters": [
+                    {
+                        "description": "search user course",
+                        "name": "list_user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.OauthUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.ListCourseResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/search": {
+            "post": {
+                "description": "Search course name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Search course name",
+                "parameters": [
+                    {
+                        "description": "search keyword",
+                        "name": "search",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.Search"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.ListCourseResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/course/update/": {
+            "put": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Update course information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Course"
+                ],
+                "summary": "Update course information",
+                "parameters": [
+                    {
+                        "description": "new course information",
+                        "name": "course",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.UpdateCourse"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/flavor/list": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List flavor",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Flavor"
+                ],
+                "summary": "List flavor",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.FlavorsListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/image/list": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List image",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Image"
+                ],
+                "summary": "List image",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.ImagesListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/job/delete/{id}": {
+            "delete": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Delete a running job vm in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "Delete a running job vm in OpenStack",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/job/launch": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create a course vm in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "Create a course vm in OpenStack",
+                "parameters": [
+                    {
+                        "description": "course want to launch",
+                        "name": "launch_course",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.LaunchCourseRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.LaunchCourseResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/job/list": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List all running course vm for a user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Job"
+                ],
+                "summary": "List all running course vm for a user",
+                "parameters": [
+                    {
+                        "description": "search user's job",
+                        "name": "list_user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.OauthUser"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.JobListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/key/list": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "List ssh key",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Key"
+                ],
+                "summary": "List ssh key",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.KeysListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vm/snapshot": {
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Create a course vm snapshot in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VM"
+                ],
+                "summary": "Create a course vm snapshot in OpenStack",
+                "parameters": [
+                    {
+                        "description": "snapshot request",
+                        "name": "snapshot",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.SnapshotRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vm/start/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Start a vm from shutdown status in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VM"
+                ],
+                "summary": "Start a vm from shutdown status in OpenStack",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/vm/stop/{id}": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "Shutdown a running VM in OpenStack",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "VM"
+                ],
+                "summary": "Shutdown a running VM in OpenStack",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericOKResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/docs.GenericErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "docs.AddCourse": {
+            "type": "object",
+            "properties": {
+                "associate": {
+                    "type": "boolean"
+                },
+                "extraports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.PortLabelValue"
+                    }
+                },
+                "flavor": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.FlavorLabelValue"
+                },
+                "image": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.ImageLabelValue"
+                },
+                "introduction": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "課程說明"
+                },
+                "level": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "basic"
+                },
+                "mount": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "shan的課"
+                },
+                "sshkey": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.SshkeyLabelValue"
+                },
+                "user": {
+                    "type": "string",
+                    "example": "shan-test@teacher"
+                },
+                "vmname": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "volume": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.VolumeLabelValue"
+                }
+            }
+        },
+        "docs.Course": {
+            "type": "object",
+            "properties": {
+                "associate": {
+                    "type": "boolean"
+                },
+                "coursefip": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "140.110.5.86"
+                },
+                "createAt": {
+                    "type": "string",
+                    "example": "2018-06-25T09:24:38Z"
+                },
+                "extraports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.PortLabelValue"
+                    }
+                },
+                "flavor": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.FlavorLabelValue"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "image": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.ImageLabelValue"
+                },
+                "introduction": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "課程說明"
+                },
+                "level": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "basic"
+                },
+                "mount": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "shan的課"
+                },
+                "sshkey": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.SshkeyLabelValue"
+                },
+                "vmname": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "volume": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.VolumeLabelValue"
+                }
+            }
+        },
+        "docs.FlavorLabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "m1.small"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "2"
+                }
+            }
+        },
+        "docs.FlavorsListResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "flavors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.LabelValue"
+                    }
+                }
+            }
+        },
+        "docs.GenericErrorResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": true
+                },
+                "message": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "error response message"
+                }
+            }
+        },
+        "docs.GenericOKResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                },
+                "message": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "response message"
+                }
+            }
+        },
+        "docs.GetCourseResponse": {
+            "type": "object",
+            "properties": {
+                "course": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.Course"
+                },
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                }
+            }
+        },
+        "docs.ImageLabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "Ubuntu 18.04"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "88b51eda-a81f-4d5c-bd74-a77bba03c5d4"
+                }
+            }
+        },
+        "docs.ImagesListResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.LabelValue"
+                    }
+                }
+            }
+        },
+        "docs.JobInfo": {
+            "type": "object",
+            "properties": {
+                "canSnapshot": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": true
+                },
+                "course_id": {
+                    "type": "string",
+                    "example": "b86b2893-b876-45c2-a3f6-5e099c15d638"
+                },
+                "extraports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.PortLabelValue"
+                    }
+                },
+                "flavor": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.FlavorLabelValue"
+                },
+                "floatingip": {
+                    "type": "string",
+                    "example": "140.110.5.105"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "image": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.ImageLabelValue"
+                },
+                "introduction": {
+                    "type": "string",
+                    "example": "for big data"
+                },
+                "level": {
+                    "type": "string",
+                    "example": "basic"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "hadoop course"
+                },
+                "privateip": {
+                    "type": "string",
+                    "example": "10.0.2.10"
+                },
+                "service": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.SVCLabelValue"
+                    }
+                },
+                "sshkey": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.SshkeyLabelValue"
+                },
+                "startAt": {
+                    "type": "string",
+                    "example": "2018-06-25T09:24:38Z"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "Ready"
+                },
+                "vmname": {
+                    "type": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "volume": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.VolumeLabelValue"
+                }
+            }
+        },
+        "docs.JobListResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                },
+                "jobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.JobInfo"
+                    }
+                }
+            }
+        },
+        "docs.JobStatus": {
+            "type": "object",
+            "properties": {
+                "job_id": {
+                    "type": "string",
+                    "example": "5ab02011-9ab7-40c3-b691-d335f93a12ee"
+                },
+                "ready": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                },
+                "status": {
+                    "type": "string",
+                    "example": "Created"
+                }
+            }
+        },
+        "docs.KeysListResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean"
+                },
+                "keys": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.LabelValue"
+                    }
+                }
+            }
+        },
+        "docs.LabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "name"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "32482124-6d7d-47a8-b4a9-dea50e50823f"
+                }
+            }
+        },
+        "docs.LaunchCourseRequest": {
+            "type": "object",
+            "properties": {
+                "course_id": {
+                    "type": "string",
+                    "example": "5ab02011-9ab7-40c3-b691-d335f93a12ee"
+                },
+                "user": {
+                    "type": "string",
+                    "example": "shan-test@teacher"
+                }
+            }
+        },
+        "docs.LaunchCourseResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                },
+                "job": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.JobStatus"
+                }
+            }
+        },
+        "docs.ListCourseResponse": {
+            "type": "object",
+            "properties": {
+                "courses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.Course"
+                    }
+                },
+                "error": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": false
+                }
+            }
+        },
+        "docs.OauthUser": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "string",
+                    "example": "shan-test@teacher"
+                }
+            }
+        },
+        "docs.PortLabelValue": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "https"
+                },
+                "port": {
+                    "type": "integer",
+                    "format": "int64",
+                    "example": 443
+                }
+            }
+        },
+        "docs.SVCLabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "VNC"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "https://140.110.5.20:6080/vnc_auto.html?token=f093722f-1f8c-4649-a55c-004fe2525cae"
+                }
+            }
+        },
+        "docs.Search": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "example": "course keyword"
+                }
+            }
+        },
+        "docs.SnapshotRequest": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "32482124-6d7d-47a8-b4a9-dea50e50823f"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "ubuntu_snap"
+                }
+            }
+        },
+        "docs.SshkeyLabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "mykey"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "mykey"
+                }
+            }
+        },
+        "docs.UpdateCourse": {
+            "type": "object",
+            "properties": {
+                "associate": {
+                    "type": "boolean"
+                },
+                "extraports": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/docs.PortLabelValue"
+                    }
+                },
+                "flavor": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.FlavorLabelValue"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "image": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.ImageLabelValue"
+                },
+                "introduction": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "課程說明"
+                },
+                "level": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "basic"
+                },
+                "mount": {
+                    "type": "boolean",
+                    "format": "bool",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "shan的課"
+                },
+                "sshkey": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.SshkeyLabelValue"
+                },
+                "vmname": {
+                    "type": "string",
+                    "format": "string",
+                    "example": "49a31009-7d1b-4ff2-badd-e8c717e2256c"
+                },
+                "volume": {
+                    "type": "object",
+                    "$ref": "#/definitions/docs.VolumeLabelValue"
+                }
+            }
+        },
+        "docs.VolumeLabelValue": {
+            "type": "object",
+            "properties": {
+                "label": {
+                    "type": "string",
+                    "example": "10"
+                },
+                "value": {
+                    "type": "string",
+                    "example": "10"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

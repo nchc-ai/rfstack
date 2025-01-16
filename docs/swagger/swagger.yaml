@@ -1,0 +1,1151 @@
+basePath: /
+definitions:
+  docs.AddCourse:
+    properties:
+      associate:
+        type: boolean
+      extraports:
+        items:
+          $ref: '#/definitions/docs.PortLabelValue'
+        type: array
+      flavor:
+        $ref: '#/definitions/docs.FlavorLabelValue'
+        type: object
+      image:
+        $ref: '#/definitions/docs.ImageLabelValue'
+        type: object
+      introduction:
+        example: 課程說明
+        format: string
+        type: string
+      level:
+        example: basic
+        format: string
+        type: string
+      mount:
+        example: true
+        format: bool
+        type: boolean
+      name:
+        example: shan的課
+        format: string
+        type: string
+      sshkey:
+        $ref: '#/definitions/docs.SshkeyLabelValue'
+        type: object
+      user:
+        example: shan-test@teacher
+        type: string
+      vmname:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        format: string
+        type: string
+      volume:
+        $ref: '#/definitions/docs.VolumeLabelValue'
+        type: object
+    type: object
+  docs.Course:
+    properties:
+      associate:
+        type: boolean
+      coursefip:
+        example: 140.110.5.86
+        format: string
+        type: string
+      createAt:
+        example: "2018-06-25T09:24:38Z"
+        type: string
+      extraports:
+        items:
+          $ref: '#/definitions/docs.PortLabelValue'
+        type: array
+      flavor:
+        $ref: '#/definitions/docs.FlavorLabelValue'
+        type: object
+      id:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        type: string
+      image:
+        $ref: '#/definitions/docs.ImageLabelValue'
+        type: object
+      introduction:
+        example: 課程說明
+        format: string
+        type: string
+      level:
+        example: basic
+        format: string
+        type: string
+      mount:
+        example: true
+        format: bool
+        type: boolean
+      name:
+        example: shan的課
+        format: string
+        type: string
+      sshkey:
+        $ref: '#/definitions/docs.SshkeyLabelValue'
+        type: object
+      vmname:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        format: string
+        type: string
+      volume:
+        $ref: '#/definitions/docs.VolumeLabelValue'
+        type: object
+    type: object
+  docs.FlavorLabelValue:
+    properties:
+      label:
+        example: m1.small
+        type: string
+      value:
+        example: "2"
+        type: string
+    type: object
+  docs.FlavorsListResponse:
+    properties:
+      error:
+        type: boolean
+      flavors:
+        items:
+          $ref: '#/definitions/docs.LabelValue'
+        type: array
+    type: object
+  docs.GenericErrorResponse:
+    properties:
+      error:
+        example: true
+        format: bool
+        type: boolean
+      message:
+        example: error response message
+        format: string
+        type: string
+    type: object
+  docs.GenericOKResponse:
+    properties:
+      error:
+        example: false
+        format: bool
+        type: boolean
+      message:
+        example: response message
+        format: string
+        type: string
+    type: object
+  docs.GetCourseResponse:
+    properties:
+      course:
+        $ref: '#/definitions/docs.Course'
+        type: object
+      error:
+        example: false
+        format: bool
+        type: boolean
+    type: object
+  docs.ImageLabelValue:
+    properties:
+      label:
+        example: Ubuntu 18.04
+        type: string
+      value:
+        example: 88b51eda-a81f-4d5c-bd74-a77bba03c5d4
+        type: string
+    type: object
+  docs.ImagesListResponse:
+    properties:
+      error:
+        type: boolean
+      images:
+        items:
+          $ref: '#/definitions/docs.LabelValue'
+        type: array
+    type: object
+  docs.JobInfo:
+    properties:
+      canSnapshot:
+        example: true
+        format: bool
+        type: boolean
+      course_id:
+        example: b86b2893-b876-45c2-a3f6-5e099c15d638
+        type: string
+      extraports:
+        items:
+          $ref: '#/definitions/docs.PortLabelValue'
+        type: array
+      flavor:
+        $ref: '#/definitions/docs.FlavorLabelValue'
+        type: object
+      floatingip:
+        example: 140.110.5.105
+        type: string
+      id:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        type: string
+      image:
+        $ref: '#/definitions/docs.ImageLabelValue'
+        type: object
+      introduction:
+        example: for big data
+        type: string
+      level:
+        example: basic
+        type: string
+      name:
+        example: hadoop course
+        type: string
+      privateip:
+        example: 10.0.2.10
+        type: string
+      service:
+        items:
+          $ref: '#/definitions/docs.SVCLabelValue'
+        type: array
+      sshkey:
+        $ref: '#/definitions/docs.SshkeyLabelValue'
+        type: object
+      startAt:
+        example: "2018-06-25T09:24:38Z"
+        type: string
+      status:
+        example: Ready
+        type: string
+      vmname:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        type: string
+      volume:
+        $ref: '#/definitions/docs.VolumeLabelValue'
+        type: object
+    type: object
+  docs.JobListResponse:
+    properties:
+      error:
+        example: false
+        format: bool
+        type: boolean
+      jobs:
+        items:
+          $ref: '#/definitions/docs.JobInfo'
+        type: array
+    type: object
+  docs.JobStatus:
+    properties:
+      job_id:
+        example: 5ab02011-9ab7-40c3-b691-d335f93a12ee
+        type: string
+      ready:
+        example: false
+        format: bool
+        type: boolean
+      status:
+        example: Created
+        type: string
+    type: object
+  docs.KeysListResponse:
+    properties:
+      error:
+        type: boolean
+      keys:
+        items:
+          $ref: '#/definitions/docs.LabelValue'
+        type: array
+    type: object
+  docs.LabelValue:
+    properties:
+      label:
+        example: name
+        type: string
+      value:
+        example: 32482124-6d7d-47a8-b4a9-dea50e50823f
+        type: string
+    type: object
+  docs.LaunchCourseRequest:
+    properties:
+      course_id:
+        example: 5ab02011-9ab7-40c3-b691-d335f93a12ee
+        type: string
+      user:
+        example: shan-test@teacher
+        type: string
+    type: object
+  docs.LaunchCourseResponse:
+    properties:
+      error:
+        example: false
+        format: bool
+        type: boolean
+      job:
+        $ref: '#/definitions/docs.JobStatus'
+        type: object
+    type: object
+  docs.ListCourseResponse:
+    properties:
+      courses:
+        items:
+          $ref: '#/definitions/docs.Course'
+        type: array
+      error:
+        example: false
+        format: bool
+        type: boolean
+    type: object
+  docs.OauthUser:
+    properties:
+      user:
+        example: shan-test@teacher
+        type: string
+    type: object
+  docs.PortLabelValue:
+    properties:
+      name:
+        example: https
+        type: string
+      port:
+        example: 443
+        format: int64
+        type: integer
+    type: object
+  docs.SVCLabelValue:
+    properties:
+      label:
+        example: VNC
+        type: string
+      value:
+        example: https://140.110.5.20:6080/vnc_auto.html?token=f093722f-1f8c-4649-a55c-004fe2525cae
+        type: string
+    type: object
+  docs.Search:
+    properties:
+      query:
+        example: course keyword
+        type: string
+    type: object
+  docs.SnapshotRequest:
+    properties:
+      id:
+        example: 32482124-6d7d-47a8-b4a9-dea50e50823f
+        type: string
+      name:
+        example: ubuntu_snap
+        type: string
+    type: object
+  docs.SshkeyLabelValue:
+    properties:
+      label:
+        example: mykey
+        type: string
+      value:
+        example: mykey
+        type: string
+    type: object
+  docs.UpdateCourse:
+    properties:
+      associate:
+        type: boolean
+      extraports:
+        items:
+          $ref: '#/definitions/docs.PortLabelValue'
+        type: array
+      flavor:
+        $ref: '#/definitions/docs.FlavorLabelValue'
+        type: object
+      id:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        type: string
+      image:
+        $ref: '#/definitions/docs.ImageLabelValue'
+        type: object
+      introduction:
+        example: 課程說明
+        format: string
+        type: string
+      level:
+        example: basic
+        format: string
+        type: string
+      mount:
+        example: true
+        format: bool
+        type: boolean
+      name:
+        example: shan的課
+        format: string
+        type: string
+      sshkey:
+        $ref: '#/definitions/docs.SshkeyLabelValue'
+        type: object
+      vmname:
+        example: 49a31009-7d1b-4ff2-badd-e8c717e2256c
+        format: string
+        type: string
+      volume:
+        $ref: '#/definitions/docs.VolumeLabelValue'
+        type: object
+    type: object
+  docs.VolumeLabelValue:
+    properties:
+      label:
+        example: "10"
+        type: string
+      value:
+        example: "10"
+        type: string
+    type: object
+host: localhost:8088
+info:
+  contact: {}
+  description: AI Train VM API.
+  license: {}
+  title: rfstack API
+  version: "0.2"
+paths:
+  /v1/classroom/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete classroom running jobs in OpenStack
+      parameters:
+      - description: 'job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete classroom running jobs in OpenStack
+      tags:
+      - Classroom
+  /v1/course/create:
+    post:
+      consumes:
+      - application/json
+      description: Add new course information into database
+      parameters:
+      - description: course information
+        in: body
+        name: course
+        required: true
+        schema:
+          $ref: '#/definitions/docs.AddCourse'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Add new course information
+      tags:
+      - Course
+  /v1/course/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: All associated job, vm, secgroup and vol-share in OpenStack are
+        also deleted.
+      parameters:
+      - description: 'course uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete course information
+      tags:
+      - Course
+  /v1/course/get/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get one courses information by course id
+      parameters:
+      - description: 'course uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GetCourseResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Get one courses information by course id
+      tags:
+      - Course
+  /v1/course/level/{level}:
+    get:
+      consumes:
+      - application/json
+      description: List basic or advance courses information
+      parameters:
+      - description: basic or advance
+        in: path
+        name: level
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.ListCourseResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      summary: List basic or advance courses information
+      tags:
+      - Course
+  /v1/course/list:
+    get:
+      consumes:
+      - application/json
+      description: get all course information
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.ListCourseResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      summary: List all course information
+      tags:
+      - Course
+    post:
+      consumes:
+      - application/json
+      description: List someone's all courses information
+      parameters:
+      - description: search user course
+        in: body
+        name: list_user
+        required: true
+        schema:
+          $ref: '#/definitions/docs.OauthUser'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.ListCourseResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List someone's all courses information
+      tags:
+      - Course
+  /v1/course/search:
+    post:
+      consumes:
+      - application/json
+      description: Search course name
+      parameters:
+      - description: search keyword
+        in: body
+        name: search
+        required: true
+        schema:
+          $ref: '#/definitions/docs.Search'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.ListCourseResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      summary: Search course name
+      tags:
+      - Course
+  /v1/course/update/:
+    put:
+      consumes:
+      - application/json
+      description: Update course information
+      parameters:
+      - description: new course information
+        in: body
+        name: course
+        required: true
+        schema:
+          $ref: '#/definitions/docs.UpdateCourse'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Update course information
+      tags:
+      - Course
+  /v1/flavor/list:
+    get:
+      consumes:
+      - application/json
+      description: List flavor
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.FlavorsListResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List flavor
+      tags:
+      - Flavor
+  /v1/image/list:
+    get:
+      consumes:
+      - application/json
+      description: List image
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.ImagesListResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List image
+      tags:
+      - Image
+  /v1/job/delete/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a running job vm in OpenStack
+      parameters:
+      - description: 'job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Delete a running job vm in OpenStack
+      tags:
+      - Job
+  /v1/job/launch:
+    post:
+      consumes:
+      - application/json
+      description: Create a course vm in OpenStack
+      parameters:
+      - description: course want to launch
+        in: body
+        name: launch_course
+        required: true
+        schema:
+          $ref: '#/definitions/docs.LaunchCourseRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.LaunchCourseResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Create a course vm in OpenStack
+      tags:
+      - Job
+  /v1/job/list:
+    post:
+      consumes:
+      - application/json
+      description: List all running course vm for a user
+      parameters:
+      - description: search user's job
+        in: body
+        name: list_user
+        required: true
+        schema:
+          $ref: '#/definitions/docs.OauthUser'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.JobListResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List all running course vm for a user
+      tags:
+      - Job
+  /v1/key/list:
+    get:
+      consumes:
+      - application/json
+      description: List ssh key
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.KeysListResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: List ssh key
+      tags:
+      - Key
+  /v1/vm/snapshot:
+    post:
+      consumes:
+      - application/json
+      description: Create a course vm snapshot in OpenStack
+      parameters:
+      - description: snapshot request
+        in: body
+        name: snapshot
+        required: true
+        schema:
+          $ref: '#/definitions/docs.SnapshotRequest'
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Create a course vm snapshot in OpenStack
+      tags:
+      - VM
+  /v1/vm/start/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Start a vm from shutdown status in OpenStack
+      parameters:
+      - description: 'job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Start a vm from shutdown status in OpenStack
+      tags:
+      - VM
+  /v1/vm/stop/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Shutdown a running VM in OpenStack
+      parameters:
+      - description: 'job uuid, eg: 131ba8a9-b60b-44f9-83b5-46590f756f41'
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/docs.GenericOKResponse'
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/docs.GenericErrorResponse'
+            type: object
+      security:
+      - ApiKeyAuth: []
+      summary: Shutdown a running VM in OpenStack
+      tags:
+      - VM
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

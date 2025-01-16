@@ -1,0 +1,37 @@
+{
+  "rfserver": {
+    "isOutsideCluster": true,
+    "port": 8033,
+    "provider": {
+      "endpoint": "http://10.11.14.6:5000/v3",
+      "username": "admin",
+      "password": "admin_password"
+    }
+  },
+  "database": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "username": "root",
+    "password": "nchcaipass",
+    "database": "rfstack"
+  },
+  "api-server": {
+    "isOutsideCluster": false,
+    "port": 38080,
+    "provider": {
+      "type": "go-oauth",
+      "name": "test-provider",
+      "client_id": "test_client_1",
+      "client_secret": "test_secret",
+      "url": "https://go.oauth2.server",
+      "redirect_url": "https://go.oauth2.server/user/course"
+    }
+  },
+  "stackvar": {
+    "tenantid": "6ee034e066ec4296b349c14c522b115c",
+    "netid": "924eab7f-5b27-486e-9be5-da3682fa1678",
+    "sharenetid": "90ca1482-4d17-47b9-af0f-9e881a0746fe",
+    "fippool": "real",
+    "fixedpool": "real_prinet"
+  }
+}
